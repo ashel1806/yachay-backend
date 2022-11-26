@@ -5,7 +5,7 @@ services:
     image: mysql
     container_name: yachay-db
     env_file:
-      - .env.development
+      - ./.env.development
     ports:
       - 3306:3306
     volumes:
