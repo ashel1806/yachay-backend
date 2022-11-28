@@ -2,7 +2,9 @@ const { sequelize } = require('../configs/database.config');
 
 const User = require('./User');
 const UserDetails = require('./UserDetails');
-const UserType = require('./UserType.js');
+const UserType = require('./UserType');
+const Course = require('./Course');
+const CourseDetails = require('./CourseDetails');
 
 // Define the dropAllTables function
 sequelize.sync({ force: true }).then(() => {
@@ -10,13 +12,15 @@ sequelize.sync({ force: true }).then(() => {
 });
 
 // Define the relationships between the models
-User.hasOne(UserDetails, { foreignKey: 'id_user', as: 'details', });
+User.hasOne(UserDetails, { foreignKey: 'id_user', as: 'details' });
 User.hasOne(UserType, { foreignKey: 'id_user', as: 'role' });
-UserDetails.belongsTo(User, { foreignKey: 'id_user', as: 'user', });
+UserDetails.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
 UserType.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
 
 module.exports = {
   User,
   UserDetails,
   UserType,
+  Course,
+  CourseDetails,
 };
