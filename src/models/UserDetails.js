@@ -4,6 +4,11 @@ const { sequelize } = require('../configs/database.config');
 class UserDetails extends Model {}
 UserDetails.init(
   {
+    idUserDetails: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     phoneNumber: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -27,7 +32,7 @@ UserDetails.init(
     profilePicture: {
       type: DataTypes.STRING,
       allowNull: true,
-    }
+    },
   },
   {
     sequelize,

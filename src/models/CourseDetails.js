@@ -54,7 +54,7 @@ CourseDetails.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    desciption: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -63,7 +63,7 @@ CourseDetails.init(
     sequelize,
     tableName: 'detalles_curso',
     timestamps: false,
-    modelName: 'User',
+    modelName: 'CourseDetails',
     underscored: true,
   }
 );

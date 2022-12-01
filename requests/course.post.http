@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/course
+Content-Type: application/json
+
+{
+  "idTeacher": 1,
+  "name": "Course 1",
+  "banner": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+}

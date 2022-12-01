@@ -1,0 +1,17 @@
+POST http://localhost:3001/api/course/details
+Content-Type: application/json
+
+{
+  "idCourse": 1,
+  "idCategory": 1,
+  "resume": "NodeJS Course",
+  "updatedAt": "2019-10-10 00:00:00",
+  "language": "en",
+  "filesCount": 34,
+  "rating": 4.5,
+  "price": 9.99,
+  "discount": 0.5,
+  "benefits": "Learn NodeJS",
+  "targetPublic": "Developers",
+  "description": "Learn NodeJS and more!!"
+}

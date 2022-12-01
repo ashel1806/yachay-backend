@@ -27,7 +27,7 @@ Course.init(
     sequelize,
     tableName: 'curso',
     timestamps: false,
-    modelName: 'User',
+    modelName: 'Course',
     underscored: true,
   }
 );
