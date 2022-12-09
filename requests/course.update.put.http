@@ -1,9 +1,0 @@
-PUT http://localhost:3001/api/course/1
-
-Content-Type: application/json
-
-{
-  "idTeacher": 0,
-  "name": "Updated Course",
-  "banner": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-}

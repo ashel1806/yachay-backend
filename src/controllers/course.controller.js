@@ -121,7 +121,7 @@ class CourseController {
         discount,
         benefits,
         targetPublic,
-        description,
+        description
       } = req.body;
 
       // Query principal
@@ -143,7 +143,7 @@ class CourseController {
           discount,
           benefits,
           targetPublic,
-          description,
+          description
         ],
         model: CourseDetails,
         mapToModel: true,
@@ -157,20 +157,21 @@ class CourseController {
     }
   }
 
-  /*
-    TODO:
-    - Implementar el método updateCourse y updateCourseDetails para actualizar los datos de un curso
-    - Ver si se puede hacer un método genérico para ambos casos (updateCourse y updateCourseDetails)
-    - Si se hace la segunda opción averiguar sobre UPDATE JOIN
-    - Registrar estos métodos o método en el archivo src/routes/course.routes.js
-    - Documentar los métodos (agregar comentarios)
-  */
+ 
   static async updateCourse(req, res) {
     try {
-      const { idCourse, idTeacher, name, banner } = req.body;
+      
+      // Obtenemos el parametro de la peticion
+      const { idCourse } = req.params;
 
+      // Obtenemos los datos del cuerpo de la petición
+      const { idTeacher, name, banner } = req.body;
+
+      // Query principal
       let sql_query =
         'UPDATE curso SET id_teacher=?, name=?, banner=? WHERE id_course=?';
+      
+      // Ejecutamos el query
       const [results, metadata] = await sequelize.query(sql_query, {
         type: QueryTypes.UPDATE,
         replacements: [idTeacher, name, banner, idCourse],
@@ -180,6 +181,7 @@ class CourseController {
 
       console.log({ results, metadata });
 
+      // Enviamos la respuesta al cliente
       return ApiUtils.sendResponse(res, 200, results);
     } catch (err) {
       console.log(err);
@@ -189,10 +191,12 @@ class CourseController {
 
   static async updateCourseDetails(req, res) {
     try {
+      
+      // Obtenemos el parametro de la peticion
+      const { idCourse } = req.params;
+
       // Obtenemos los datos del cuerpo de la petición
       const {
-        idCourseDetails,
-        idCourse,
         idCategory,
         resume,
         updatedAt,
@@ -203,16 +207,17 @@ class CourseController {
         discount,
         benefits,
         targetPublic,
-        description,
+        description
       } = req.body;
 
+      // Query principal
       let sql_query =
-        'UPDATE curso SET idCourse=?, idCategory=?, resume=?, updatedAt=?, language=?, filesCount=?, rating=?, price=?, discount=?, benefits=?, targetPublic=?, description=? WHERE id_courseDetails=?';
+        'UPDATE detalles_curso SET id_category=?, resume=?, updated_at=?, language=?, files_count=?, rating=?, price=?, discount=?, benefits=?, target_public=?, description=? WHERE id_course=?';
+      
+      // Ejecutamos el query
       const [results, metadata] = await sequelize.query(sql_query, {
         type: QueryTypes.UPDATE,
         replacements: [
-          idCourseDetails,
-          idCourse,
           idCategory,
           resume,
           updatedAt,
@@ -223,13 +228,16 @@ class CourseController {
           discount,
           benefits,
           targetPublic,
-          description,],
+          description,
+          idCourse
+        ],
         model: CourseDetails,
         mapToModel: true,
       });
 
       console.log({ results, metadata });
 
+      // Enviamos la respuesta al cliente
       return ApiUtils.sendResponse(res, 200, results);
     } catch (err) {
       console.log(err);

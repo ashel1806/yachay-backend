@@ -6,5 +6,7 @@ router.route('/:idCourse').get(CourseController.findCourseById);
 router.route('/').post(CourseController.createCourse);
 router.route('/details').post(CourseController.createCourseDetails);
 router.route('/:idCourse').put(CourseController.updateCourse);
+router.route('/details/:idCourse').put(CourseController.updateCourseDetails);
+
 
 module.exports = router;
