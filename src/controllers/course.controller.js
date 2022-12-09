@@ -165,9 +165,77 @@ class CourseController {
     - Registrar estos métodos o método en el archivo src/routes/course.routes.js
     - Documentar los métodos (agregar comentarios)
   */
-  static async updateCourse(req, res) {}
+  static async updateCourse(req, res) {
+    try {
+      const { idCourse, idTeacher, name, banner } = req.body;
 
-  static async updateCourseDetails(req, res) {}
+      let sql_query =
+        'UPDATE curso SET id_teacher=?, name=?, banner=? WHERE id_course=?';
+      const [results, metadata] = await sequelize.query(sql_query, {
+        type: QueryTypes.UPDATE,
+        replacements: [idTeacher, name, banner, idCourse],
+        model: Course,
+        mapToModel: true,
+      });
+
+      console.log({ results, metadata });
+
+      return ApiUtils.sendResponse(res, 200, results);
+    } catch (err) {
+      console.log(err);
+      return ApiUtils.sendResponse(res, 500, err);
+    }
+  }
+
+  static async updateCourseDetails(req, res) {
+    try {
+      // Obtenemos los datos del cuerpo de la petición
+      const {
+        idCourseDetails,
+        idCourse,
+        idCategory,
+        resume,
+        updatedAt,
+        language,
+        filesCount,
+        rating,
+        price,
+        discount,
+        benefits,
+        targetPublic,
+        description,
+      } = req.body;
+
+      let sql_query =
+        'UPDATE curso SET idCourse=?, idCategory=?, resume=?, updatedAt=?, language=?, filesCount=?, rating=?, price=?, discount=?, benefits=?, targetPublic=?, description=? WHERE id_courseDetails=?';
+      const [results, metadata] = await sequelize.query(sql_query, {
+        type: QueryTypes.UPDATE,
+        replacements: [
+          idCourseDetails,
+          idCourse,
+          idCategory,
+          resume,
+          updatedAt,
+          language,
+          filesCount,
+          rating,
+          price,
+          discount,
+          benefits,
+          targetPublic,
+          description,],
+        model: CourseDetails,
+        mapToModel: true,
+      });
+
+      console.log({ results, metadata });
+
+      return ApiUtils.sendResponse(res, 200, results);
+    } catch (err) {
+      console.log(err);
+      return ApiUtils.sendResponse(res, 500, err);
+    }
+  }
 }
 
 module.exports = CourseController;
