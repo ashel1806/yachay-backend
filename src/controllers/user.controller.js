@@ -19,8 +19,8 @@ const getUserRoles = async (req, res) => {
   });
 };
 
-const postUserDetails = asyncHandler(async (req, res, next) => {
-  const idUser = req.params.idUser;
+const fillUserDetails = asyncHandler(async (req, res, next) => {
+  const idUser = req.user.idUser;
   const data = req.body;
 
   await UserDetails.update(data, {
@@ -61,6 +61,6 @@ const me = async (req, res) => {
 module.exports = {
   getUserDetails,
   getUserRoles,
-  postUserDetails,
+  fillUserDetails,
   me,
 };

@@ -3,7 +3,13 @@ POST http://localhost:3001/api/auth/signup
 Content-Type: application/json
 
 {
-  "nameUser": "Ashel Vasquez",
-  "email": "ashel@gmail.com",
-  "password": "algarrobina23"
+  "info": {
+    "nameUser": "Ashel",
+    "email": "ashel@gmail.com",
+    "password": "algarrobina23"
+  },
+  "details": {
+    "lastName": "Vasquez"
+  },
+  "role": "Alumno"
 }

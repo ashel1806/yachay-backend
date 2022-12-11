@@ -1,2 +1,2 @@
-GET http://localhost:3001/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxfSwiaWF0IjoxNjY4Njc4OTgwfQ.jiGfBAPsqQ7Ow8UYLmV4BpochBJ2kXP3g4Zpy2wLm9o
+GET http://localhost:3001/api/user/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxfSwiaWF0IjoxNjcwNzI5NzE4fQ.BK3bJwEeGBcDfRbVZ36h-qcUQOvopHWzO6mEc7ztAKs

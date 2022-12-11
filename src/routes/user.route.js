@@ -5,8 +5,6 @@ const { userTokenExtractor } = require('../middlewares');
 router.route('/details').get(userController.getUserDetails);
 router.route('/roles').get(userController.getUserRoles);
 router.route('/me').get(userTokenExtractor, userController.me);
-router
-  .route('/me/:idUser')
-  .put(userTokenExtractor, userController.postUserDetails);
+router.route('/me').put(userTokenExtractor, userController.fillUserDetails);
 
 module.exports = router;

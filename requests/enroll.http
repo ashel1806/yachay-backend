@@ -1,0 +1,2 @@
+POST http://localhost:3001/api/enroll/1
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxfSwiaWF0IjoxNjcwNzI5NzE4fQ.BK3bJwEeGBcDfRbVZ36h-qcUQOvopHWzO6mEc7ztAKs
