@@ -6,6 +6,8 @@ const UserType = require('./UserType');
 const Course = require('./Course');
 const CourseDetails = require('./CourseDetails');
 const StudentsCourses = require('./StudentsCourses');
+const Cart = require('./Cart');
+const ItemCart = require('./ItemCart');
 
 // Define the dropAllTables function
 sequelize.sync({ force: true }).then(() => {
@@ -19,6 +21,14 @@ UserDetails.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
 UserType.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
 Course.hasOne(CourseDetails, { foreignKey: 'id_course', as: 'details' });
 CourseDetails.belongsTo(Course, { foreignKey: 'id_course', as: 'course' });
+
+// Define the one-to-many relationship between the User and Cart models
+User.hasMany(Cart, { foreignKey: 'id_user', as: 'carts' });
+Cart.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
+
+// Define the one-to-many relationship between the Cart and ItemCart models
+Cart.hasMany(ItemCart, { foreignKey: 'id_cart', as: 'items' });
+ItemCart.belongsTo(Cart, { foreignKey: 'id_cart', as: 'cart' });
 
 // Define the many-to-many relationship between the User and Course models
 User.belongsToMany(Course, {
@@ -41,4 +51,7 @@ module.exports = {
   UserType,
   Course,
   CourseDetails,
+  StudentsCourses,
+  Cart,
+  ItemCart,
 };

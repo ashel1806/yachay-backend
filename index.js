@@ -8,6 +8,8 @@ const {
   userRoute,
   courseRoute,
   enrollRoute,
+  cartRoute,
+  itemCartRoute,
 } = require('./src/routes');
 
 const { errorHandler } = require('./src/middlewares');
@@ -22,6 +24,8 @@ app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
 app.use('/api/course', courseRoute);
 app.use('/api/enroll', enrollRoute);
+app.use('/api/cart', cartRoute);
+app.use('/api/itemCart', itemCartRoute);
 
 app.use(errorHandler);
 
