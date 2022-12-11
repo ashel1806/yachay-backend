@@ -2,3 +2,4 @@ database
 .gitignore
 README.md
 requests
+node_modules
